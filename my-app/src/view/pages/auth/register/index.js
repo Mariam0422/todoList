@@ -2,10 +2,10 @@ import { useState } from 'react';
 import {Typography, Input, Divider, Button, Form, notification} from 'antd';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../../services/firebase/firebase';
-import './index.css';
+import RegisterCover from '../../../../core/images/register.png'
+import AuthWrapper from '../../../components/shared/AuthWrapper';
 
 const {Title} = Typography;
-
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -48,11 +48,10 @@ const Register = () => {
 
   }
     return ( 
-        <div className='register_form'>      
+        <AuthWrapper coverImg={RegisterCover}>      
           <Title level={2}>
           Register
-         </Title>
-         
+         </Title>         
          <Form layout='vertical' onValuesChange={handleChangeInput}>
          <Form.Item name='firstName' label="First Name">
           <Input type='text'  placeholder='first name'  value={formValues.firstName}/>
@@ -76,7 +75,7 @@ const Register = () => {
          <Divider/>
          <Button className='button'  onClick={handleRegister} loading={loading}>Register</Button>
          </Form>
-        </div>
+        </AuthWrapper>
     )
 }
 export default Register;
