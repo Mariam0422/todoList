@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Typography, Input, Divider, Button, Form, notification, Select, Radio, DatePicker,  } from 'antd';
+import { Typography, Input, Divider, Button, Form, notification, Select, Radio, DatePicker, } from 'antd';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, setDoc, doc, db } from '../../../../services/firebase/firebase';
 import RegisterCover from '../../../../core/images/register.png'
@@ -64,7 +64,7 @@ const Register = () => {
   }
 
     return ( 
-        <AuthWrapper coverImg={RegisterCover} >      
+        <AuthWrapper coverImg={RegisterCover}  maxWidth="700px" >        
           <Title level={2}>
           Register
          </Title>         
