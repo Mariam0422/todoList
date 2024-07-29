@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'; 
 import './App.css';
 import MainLayout from './view/layouts/MainLayouts';
+import Cabinet from './view/pages/cabinet';
 
 
 
@@ -16,6 +17,7 @@ const route = createBrowserRouter(
     <Route path='/' element={<MainLayout/>}>
       <Route path='register' element={<Register/>} />
       <Route path='login' element={<Login/>} />
+      <Route path='cabinet' element={<Cabinet/>} />
     </Route>
   )
 )
