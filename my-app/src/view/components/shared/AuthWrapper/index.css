@@ -5,7 +5,8 @@
     border: 1px solid #3333;
     border-radius: 12px;
     overflow: hidden;
-    background-color: white;
+    background-color: azure;
+    box-shadow: 1px 2px 8px #333;
 }
 .cover_image_container{
  background-size: cover;

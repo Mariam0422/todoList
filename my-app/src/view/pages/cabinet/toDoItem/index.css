@@ -1,0 +1,14 @@
+.todoItem{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border: 1px solid #aeaeae;
+    border-radius: 20px;
+}
+.boxText{
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
