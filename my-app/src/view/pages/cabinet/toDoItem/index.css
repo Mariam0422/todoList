@@ -1,11 +1,16 @@
 .todoItem{
     width: 90%;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px;
-    border: 1px solid #aeaeae;
+    padding: 2px 5px 2px 5px;
     border-radius: 20px;
+    background-color: rgb(154, 202, 234);
+}
+.todoItem:hover{
+    border: 1px solid rgb(142, 187, 216);;
+    box-shadow: 2px 3px 4px #7d7c7c33;
 }
 .boxText{
     display: flex;

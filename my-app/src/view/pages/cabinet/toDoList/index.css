@@ -1,13 +1,13 @@
-
 .todoList{
 max-width: 550px;
-height: 400px;
+max-height: 300px;
 margin: 100px auto;
 display: flex;
 flex-direction: column;
 align-items: center;
-border: 1px solid #333;
+border: 1px solid #959191;
 border-radius: 20px;
-padding: 15px;
-background-color: azure;
+padding: 20px 10px 5px 10px;
+background-color: rgb(255, 255, 255);
+overflow-y: auto;
 }

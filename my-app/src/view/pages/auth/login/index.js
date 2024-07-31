@@ -2,7 +2,7 @@ import { Form, Input, Button, Typography, notification } from "antd";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../../services/firebase/firebase";
 import AuthWrapper from "../../../components/shared/AuthWrapper";
-import loginCover from "../../../../core/images/login.jpg"
+import loginCover from "../../../../core/images/login.png"
 import './index.css';
 import { useState } from "react";
 

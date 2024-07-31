@@ -6,9 +6,9 @@ import {
   createRoutesFromElements, 
   RouterProvider 
 } from 'react-router-dom'; 
-import './App.css';
 import MainLayout from './view/layouts/MainLayouts';
 import Cabinet from './view/pages/cabinet';
+import './App.css';
 
 
 
