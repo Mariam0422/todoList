@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, setDoc, doc, db } from '../../../../services/firebase/firebase';
 import RegisterCover from '../../../../core/images/register.png'
 import AuthWrapper from '../../../components/shared/AuthWrapper';
+import { useNavigate } from "react-router-dom";
 import './index.css'
 
 const {Title} = Typography;
@@ -20,25 +21,15 @@ const option = [
 const Register = () => {
   const [loading, setLoading] = useState(false);
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [formValues, setformValues] = useState({
-    userValue: "",
-    firstName: "",
-    lastName: "",
-    gender: "",
-    headLine: "",
-    email: "",
-    password: ""
-  });
-
-  const handleChangeInput = (e, allvalues) => {
-   setformValues(allvalues);
-  }
+  const navigate = useNavigate();
+  const [form] = Form.useForm();
+  
   const handleDateChange = (date, dateString) => {
     setDateOfBirth(dateString);
   };
 
-  const handleRegister = async () => {
-    const { userValue, email, password, firstName, lastName, headLine, gender} = formValues;  
+  const handleRegister = async (values) => {
+    const { userValue, email, password, firstName, lastName, headLine, gender} = values;  
     setLoading(true);
     try{
     const response = await createUserWithEmailAndPassword(auth, email, password);   
@@ -51,7 +42,8 @@ const Register = () => {
         message: "Success Register",
         description: `Hello ${firstName} ${lastName}`
       })   
-       
+      form.resetFields();
+      navigate("/login");
     }  catch(error){
       notification.error({
         message: "Error Register",
@@ -68,17 +60,26 @@ const Register = () => {
           <Title level={2}>
           Register
          </Title>         
-         <Form layout='vertical' onValuesChange={handleChangeInput} >
+         <Form layout='vertical' form={form} onFinish={handleRegister}>
           <div className='registerForm'>
           <div>        
-          <Form.Item label="Register for" name="userValue">
+          <Form.Item label="Register for" name="userValue"
+           rules={[
+            {required: true, message: "Please input User Type"}
+        ]}>
             <Select options={option} placeholder="Student"/>      
           </Form.Item>
-         <Form.Item name='firstName' label="First Name">
-          <Input type='text'  placeholder='first name'  value={formValues.firstName}/>
+         <Form.Item name='firstName' label="First Name"
+          rules={[
+            {required: true, message: "Please input First Name"}
+        ]}>
+          <Input type='text'  placeholder='first name'  />
          </Form.Item>
-         <Form.Item name='lastName' label="Last Name">
-          <Input type='text' placeholder='last name' value={formValues.lastName}
+         <Form.Item name='lastName' label="Last Name"
+          rules={[
+            {required: true, message: "Please input Last Name"}
+        ]}>
+          <Input type='text' placeholder='last name' 
            />
          </Form.Item>
          <Form.Item label="Gender" name="gender">
@@ -90,27 +91,35 @@ const Register = () => {
          </div>
 
 
-
          <div>
           <Form.Item label="Select your date of birth">
          <DatePicker onChange={handleDateChange} style={{width: "200px"}}/>
           </Form.Item>
-         <Form.Item name='headLine' label="Headline">
-          <Input type='text'  placeholder='headLine' value={formValues.headLine}
+         <Form.Item name='headLine' label="Headline"
+          rules={[
+            {required: true, message: "Please input Headline"}
+        ]}>
+          <Input type='text'  placeholder='headLine' 
           />
          </Form.Item>
-             <Form.Item name='email' label="Email">
-          <Input type='email'  placeholder='email'   value={formValues.email}
+             <Form.Item name='email' label="Email"
+              rules={[
+                {required: true, message: "Please input email"}
+            ]}>
+          <Input type='email'  placeholder='email' 
            />
          </Form.Item>
-         <Form.Item name='password' label="Password">
-          <Input.Password  placeholder='password'   value={formValues.password}
+         <Form.Item name='password' label="Password"
+          rules={[
+            {required: true, message: "Please input Password"}
+        ]}>
+          <Input.Password  placeholder='password'  
             />
          </Form.Item>       
          </div>
          </div>
          <Divider/>
-         <Button className='button' onClick={handleRegister} loading={loading}>Register</Button>
+         <Button className='button' htmlType='submit' loading={loading}>Register</Button>
          </Form>
         </AuthWrapper>
     )
